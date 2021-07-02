@@ -9,9 +9,7 @@ const Home = ({ navigation }) => {
       <Text>Home Component 2</Text>
       <LoginButton
         activeOpacity={0.9}
-        onPress={() =>
-          navigation.navigate("Auth", { id: 1337, productName: "Sneakers" })
-        }
+        onPress={() => navigation.navigate("Auth")}
       >
         <LoginText>Go to Auth</LoginText>
       </LoginButton>

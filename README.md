@@ -1,11 +1,17 @@
-- React Native Boiler Plate With:
+* NyatetApp:
 
-* Expo
+** 02 / 07 / 2021
 
-* Styled Components
+- Welcome Screen done
 
-* Framer Motion
+- Login Screen done
 
-* React Navigation
+** TODO :
 
-* Folder Structure Like React
+- All Screen from design file figma to react native
+
+- Connect Backend
+
+- Implement Authentication
+
+- Add Animation

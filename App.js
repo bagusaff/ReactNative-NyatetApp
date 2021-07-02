@@ -7,6 +7,7 @@ import AppLoading from "expo-app-loading";
 //Layout
 import Home from "./src/layout/Home.layout";
 import Auth from "./src/layout/Auth.layout";
+import Welcome from "./src/layout/Welcome.layout";
 
 export default function App() {
   const Stack = createStackNavigator();
@@ -22,9 +23,13 @@ export default function App() {
   } else {
     return (
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Home">
+        <Stack.Navigator
+          initialRouteName="Welcome"
+          screenOptions={{ headerShown: false }}
+        >
+          <Stack.Screen name="Welcome" component={Welcome} />
           <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="Auth" component={Auth} />
+          <Stack.Screen name="Auth" component={Auth} options={{}} />
         </Stack.Navigator>
       </NavigationContainer>
     );
