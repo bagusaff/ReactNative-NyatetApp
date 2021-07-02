@@ -1,12 +1,12 @@
-* NyatetApp:
+# NyatetApp:
 
-** 02 / 07 / 2021
+## 02 / 07 / 2021
 
 - Welcome Screen done
 
 - Login Screen done
 
-** TODO :
+## TODO :
 
 - All Screen from design file figma to react native
 
