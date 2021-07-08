@@ -11,36 +11,12 @@ const Auth = ({ navigation }) => {
       </LogoWrapper>
       <FormWrapper>
         <Title>Login</Title>
-        <InputWrapper
-          style={{
-            shadowColor: "#000",
-            shadowOffset: {
-              width: 0,
-              height: 1,
-            },
-            shadowOpacity: 0.58,
-            shadowRadius: 0.3,
-
-            elevation: 5,
-          }}
-        >
+        <InputWrapper>
           <InputTitle>Username</InputTitle>
           <StyledInput placeholder="Username" placeholderTextColor="#C4C4C4" />
         </InputWrapper>
 
-        <InputWrapper
-          style={{
-            shadowColor: "#000",
-            shadowOffset: {
-              width: 0,
-              height: 0,
-            },
-            shadowOpacity: 0,
-            shadowRadius: 0,
-
-            elevation: 5,
-          }}
-        >
+        <InputWrapper>
           <InputTitle>Password</InputTitle>
           <StyledInput
             secureTextEntry={true}
@@ -52,7 +28,10 @@ const Auth = ({ navigation }) => {
           <LoginText>Login</LoginText>
         </LoginButton>
         <LabelText>Belum Punya Akun ?</LabelText>
-        <RegisterButton activeOpacity={0.5}>
+        <RegisterButton
+          activeOpacity={0.5}
+          onPress={() => navigation.navigate("Register")}
+        >
           <RegisterText>Register</RegisterText>
         </RegisterButton>
         <StatusBar style="auto" />
@@ -93,6 +72,8 @@ const InputWrapper = styled.View`
   margin-top: 10px;
   margin-bottom: 10px;
   border-radius: 5px;
+  border-width: 2px;
+  border-color: #f6f6f6;
   padding: 15px;
   width: 100%;
 `;
