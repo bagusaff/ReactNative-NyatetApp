@@ -67,7 +67,7 @@ const Home = ({ navigation }) => {
             horizontal={true}
             contentContainerStyle={{ width: "200%" }}
             showsHorizontalScrollIndicator={false}
-            scrollEventThrottle={200}
+            scrollEventThrottle={100}
             decelerationRate="fast"
             pagingEnabled
             onScroll={Animated.event(
@@ -76,7 +76,7 @@ const Home = ({ navigation }) => {
                 useNativeDriver: false,
               }
             )}
-            scrollEventThrottle={32}
+            scrollEventThrottle={24}
             onViewableItemsChanged={viewableCardChanged}
             viewabilityConfig={viewConfig}
             ref={slidesRef}

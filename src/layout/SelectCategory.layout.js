@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, Image } from "react-native";
 import styled from "styled-components/native";
 import Icon from "react-native-vector-icons/Ionicons";
 import { Income, Outcome } from "../data/Category.data";
-const SelectCategory = () => {
+const SelectCategory = ({ navigation }) => {
   const [isSelected, setIsSelected] = useState(false);
   return (
     <Wrapper>
@@ -41,7 +41,15 @@ const SelectCategory = () => {
           {!isSelected
             ? Income.map((data, index) => (
                 <FilterIconWrapper key={index}>
-                  <FilterIcon>
+                  <FilterIcon
+                    onPress={() =>
+                      navigation.push("Post", {
+                        type: "Pemasukan",
+                        title: data.name,
+                        image: data.image,
+                      })
+                    }
+                  >
                     <Image
                       source={data.image}
                       style={{ width: 40, height: 40 }}
@@ -52,10 +60,18 @@ const SelectCategory = () => {
               ))
             : Outcome.map((data, index) => (
                 <FilterIconWrapper key={index}>
-                  <FilterIcon>
+                  <FilterIcon
+                    onPress={() =>
+                      navigation.push("Post", {
+                        type: "Pengeluaran",
+                        title: data.name,
+                        image: data.image,
+                      })
+                    }
+                  >
                     <Image
                       source={data.image}
-                      style={{ width: 40, height: 40 }}
+                      style={{ width: 40, height: 40, resizeMode: "contain" }}
                     />
                   </FilterIcon>
                   <FilterTitle>{data.name}</FilterTitle>

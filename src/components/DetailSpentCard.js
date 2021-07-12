@@ -79,13 +79,14 @@ const Wrapper = styled.View`
   background-color: #fff;
   padding: 10px;
   width: 100%;
+  flex: 1;
+  height: 225px;
   shadow-opacity: 0.22;
   shadow-radius: 2.22;
   elevation: 3;
   flex-direction: row;
   margin-bottom: 5px;
   margin-horizontal: 15px;
-  flex: 1;
 `;
 
 const LeftWrapper = styled.View`

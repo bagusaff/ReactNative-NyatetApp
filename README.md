@@ -20,6 +20,13 @@
 
 - Create New Post -> Select Category done
 
+## 12 / 07 / 2021
+
+- Navbar Done
+
+- Transaction Section Done
+
+
 
 ## TODO :
 

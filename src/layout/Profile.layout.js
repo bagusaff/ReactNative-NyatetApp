@@ -11,10 +11,13 @@ import {
 import styled from "styled-components/native";
 import Icon from "react-native-vector-icons/Ionicons";
 
-let ScreenHeight = Dimensions.get("window").height;
+// let ScreenHeight = Dimensions.get("window").height;
 const Profile = () => {
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
+    <ScrollView
+      style={{ backgroundColor: "#fff" }}
+      showsVerticalScrollIndicator={false}
+    >
       <Wrapper>
         <TitleWrapper>
           <Title>Halaman Profil</Title>
@@ -128,7 +131,6 @@ const Wrapper = styled.View`
   flex: 1;
   width: 100%;
   background-color: white;
-  height: ${ScreenHeight};
   padding-top: 30px;
   padding-horizontal: 15px;
 `;
