@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -6,18 +6,55 @@ import {
   TextInput,
   TouchableOpacity,
   ScrollView,
+  Dimensions,
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import styled from "styled-components/native";
+import ModalDropdown from "react-native-modal-dropdown";
+
 import CategoryTransactionCard from "../components/CategoryTransactionCard";
 import DetailSpentCard from "../components/DetailSpentCard";
 import TransactionCard from "../components/TransactionCard";
-const Outcome = () => {
+const Outcome = ({ navigation }) => {
+  const windowWidth = Dimensions.get("window").width;
   return (
     <Wrapper>
       <HeaderWrapper>
-        <HeaderTitle>Pengeluaran</HeaderTitle>
-        <Icon name="caret-down-outline" size={20} color="#000000" />
+        <ModalDropdown
+          dropdownStyle={{
+            width: windowWidth / 2,
+            height: 85,
+            marginTop: -20,
+            paddingHorizontal: 10,
+          }}
+          dropdownTextStyle={{
+            fontFamily: "DMSans-Medium",
+            fontSize: 16,
+            color: "#000",
+          }}
+          dropdownTextHighlightStyle={{ color: "#000" }}
+          isFullWidth={true}
+          options={["Pemasukan", "Pengeluaran"]}
+          onSelect={(index, option) => {
+            if (option === "Pemasukan") {
+              navigation.navigate("Income");
+            } else if (option === "Pengeluaran") {
+              navigation.navigate("Outcome");
+            }
+          }}
+        >
+          <HeaderTitleWrapper>
+            <HeaderTitle>Pengeluaran</HeaderTitle>
+            <Icon name="caret-down-outline" size={20} color="#000000" />
+          </HeaderTitleWrapper>
+        </ModalDropdown>
+
+        <AddIcon
+          activeOpacity={0.8}
+          onPress={() => navigation.navigate("SelectCategory")}
+        >
+          <Icon name="add-outline" size={25} />
+        </AddIcon>
       </HeaderWrapper>
       <FilterWrapper>
         <FilterButton activeOpacity={0.9}>
@@ -69,10 +106,11 @@ const Wrapper = styled.View`
 `;
 
 const HeaderWrapper = styled.View`
-  justify-content: center;
+  justify-content: space-between;
   padding-vertical: 30px;
+  padding-horizontal: 15px;
   flex-direction: row;
-  align-items: flex-end;
+  align-items: center;
 `;
 
 const HeaderTitle = styled.Text`
@@ -80,7 +118,17 @@ const HeaderTitle = styled.Text`
   font-size: 18px;
   text-align: center;
   color: #000000;
-  padding-right: 10px;
+  padding-right: 5px;
+`;
+
+const AddIcon = styled.TouchableOpacity`
+  background: #eaeaea;
+  padding: 10px;
+  border-radius: 60px;
+`;
+
+const HeaderTitleWrapper = styled.View`
+  flex-direction: row;
 `;
 
 const FilterWrapper = styled.View`

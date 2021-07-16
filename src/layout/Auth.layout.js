@@ -2,8 +2,22 @@ import React from "react";
 import { View, Text, TouchableOpacity, TextInput } from "react-native";
 import styled from "styled-components/native";
 import { StatusBar } from "expo-status-bar";
+
+import { useDispatch, useSelector } from "react-redux";
+
 import NyatetLogo from "../assets/svg/NyatetLogo";
+
 const Auth = ({ navigation }) => {
+  const dispatch = useDispatch();
+  const { username, password } = useSelector((state) => state.login);
+  const onInputChanges = (value, input) => {
+    dispatch({ type: "SET_FORM", inputType: input, inputValue: value });
+  };
+
+  const sendForm = () => {
+    console.log("data yang dikiriM: ", username, password);
+  };
+
   return (
     <Wrapper>
       <LogoWrapper>
@@ -13,7 +27,12 @@ const Auth = ({ navigation }) => {
         <Title>Login</Title>
         <InputWrapper>
           <InputTitle>Username</InputTitle>
-          <StyledInput placeholder="Username" placeholderTextColor="#C4C4C4" />
+          <StyledInput
+            placeholder="Username"
+            placeholderTextColor="#C4C4C4"
+            value={username}
+            onChangeText={(value) => onInputChanges(value, "username")}
+          />
         </InputWrapper>
 
         <InputWrapper>
@@ -22,9 +41,11 @@ const Auth = ({ navigation }) => {
             secureTextEntry={true}
             placeholder="Password"
             placeholderTextColor="#C4C4C4"
+            value={password}
+            onChangeText={(value) => onInputChanges(value, "password")}
           />
         </InputWrapper>
-        <LoginButton activeOpacity={0.8} onPress={() => navigation.goBack()}>
+        <LoginButton activeOpacity={0.8} onPress={sendForm}>
           <LoginText>Login</LoginText>
         </LoginButton>
         <LabelText>Belum Punya Akun ?</LabelText>

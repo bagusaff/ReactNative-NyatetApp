@@ -11,6 +11,8 @@ import {
 import styled from "styled-components/native";
 import { StatusBar } from "expo-status-bar";
 import Icon from "react-native-vector-icons/Ionicons";
+import { useNavigation } from "@react-navigation/native";
+
 import DetailSpentCard from "../components/DetailSpentCard";
 import Paginator from "../components/Paginator";
 import TransactionCard from "../components/TransactionCard";
@@ -19,6 +21,7 @@ const Home = ({ navigation }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollX = useRef(new Animated.Value(0)).current;
   const slidesRef = useRef(null);
+  const navHooks = useNavigation();
 
   const viewableCardChanged = useRef(({ viewableCard }) => {
     setCurrentIndex(viewableCard[0].index);
@@ -34,6 +37,7 @@ const Home = ({ navigation }) => {
             color="#000"
             size={40}
             style={{ marginRight: 25 }}
+            onPress={() => navHooks.openDrawer()}
           />
           <UserWrapper>
             <UserName>Ardhian Yuliandra Hanum</UserName>
@@ -158,8 +162,7 @@ const LabelInfo = styled.View`
   border-color: #f6f6f6;
   width: 48%;
   background-color: #ffffff;
-  shadow-opacity: 0.22;
-  shadow-radius: 2.22;
+  shadow-opacity: 0.5;
   elevation: 3;
 `;
 

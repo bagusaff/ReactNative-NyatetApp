@@ -26,6 +26,13 @@
 
 - Transaction Section Done
 
+## 16 / 07 / 2021
+
+- Add Notes Section
+
+- Adjust New Design
+
+- Configure Redux
 
 
 ## TODO :

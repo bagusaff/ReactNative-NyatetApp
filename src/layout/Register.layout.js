@@ -2,8 +2,29 @@ import React from "react";
 import { View, Text, TouchableOpacity, TextInput } from "react-native";
 import styled from "styled-components/native";
 import { StatusBar } from "expo-status-bar";
+
+import { useDispatch, useSelector } from "react-redux";
+
 import Icon from "react-native-vector-icons/Ionicons";
 const Register = ({ navigation }) => {
+  const dispatch = useDispatch();
+  const { fullName, email, username, password, confirmPassword } = useSelector(
+    (state) => state.register
+  );
+  const onInputChanges = (value, input) => {
+    dispatch({ type: "SET_FORM", inputType: input, inputValue: value });
+  };
+
+  const sendForm = () => {
+    console.log(
+      "data yang dikiriM: ",
+      fullName,
+      email,
+      username,
+      password,
+      confirmPassword
+    );
+  };
   return (
     <Wrapper>
       <HeaderWrapper>
@@ -20,7 +41,12 @@ const Register = ({ navigation }) => {
       <FormWrapper>
         <InputWrapper>
           <InputTitle>Full Name</InputTitle>
-          <StyledInput placeholder="Full Name" placeholderTextColor="#C4C4C4" />
+          <StyledInput
+            placeholder="Full Name"
+            placeholderTextColor="#C4C4C4"
+            value={fullName}
+            onChangeText={(value) => onInputChanges(value, "fullName")}
+          />
         </InputWrapper>
         <InputWrapper>
           <InputTitle>Email</InputTitle>
@@ -29,11 +55,18 @@ const Register = ({ navigation }) => {
             autoCompleteType="email"
             keyboardType="email-address"
             placeholderTextColor="#C4C4C4"
+            value={email}
+            onChangeText={(value) => onInputChanges(value, "email")}
           />
         </InputWrapper>
         <InputWrapper>
           <InputTitle>Username</InputTitle>
-          <StyledInput placeholder="Username" placeholderTextColor="#C4C4C4" />
+          <StyledInput
+            placeholder="Username"
+            placeholderTextColor="#C4C4C4"
+            value={username}
+            onChangeText={(value) => onInputChanges(value, "username")}
+          />
         </InputWrapper>
         <InputWrapper>
           <InputTitle>Password</InputTitle>
@@ -41,6 +74,8 @@ const Register = ({ navigation }) => {
             secureTextEntry={true}
             placeholder="Password"
             placeholderTextColor="#C4C4C4"
+            value={password}
+            onChangeText={(value) => onInputChanges(value, "password")}
           />
         </InputWrapper>
         <InputWrapper>
@@ -49,13 +84,12 @@ const Register = ({ navigation }) => {
             secureTextEntry={true}
             placeholder="Re-enter Password"
             placeholderTextColor="#C4C4C4"
+            value={confirmPassword}
+            onChangeText={(value) => onInputChanges(value, "confirmPassword")}
           />
         </InputWrapper>
 
-        <RegisterButton
-          activeOpacity={0.7}
-          onPress={() => navigation.navigate("Home")}
-        >
+        <RegisterButton activeOpacity={0.7} onPress={sendForm}>
           <RegisterText>Register</RegisterText>
         </RegisterButton>
       </FormWrapper>

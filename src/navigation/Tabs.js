@@ -4,37 +4,12 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import HomeStack from "../stacks/Home.stack";
 import ProfileStack from "../stacks/Profile.stack";
-import NewPost from "../stacks/NewPost.stack";
 import TransactionStack from "../stacks/Transaction.stack";
+import NoteStack from "../stacks/Note.stack";
 
 import IonIcon from "react-native-vector-icons/Ionicons";
-import MaterialIcon from "react-native-vector-icons/MaterialCommunityIcons";
 
 const Tab = createBottomTabNavigator();
-
-const CustomTabBarButton = ({ children, onPress }) => (
-  <TouchableOpacity
-    style={{
-      top: -20,
-      justifyContent: "center",
-      alignItems: "center",
-      ...styles.shadow,
-    }}
-    onPress={onPress}
-    activeOpacity={0.9}
-  >
-    <View
-      style={{
-        width: 70,
-        height: 70,
-        borderRadius: 35,
-        backgroundColor: "#EAEAEA",
-      }}
-    >
-      {children}
-    </View>
-  </TouchableOpacity>
-);
 
 const Tabs = () => {
   return (
@@ -84,22 +59,8 @@ const Tabs = () => {
         }}
       />
       <Tab.Screen
-        name="NewPost"
-        component={NewPost}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <IonIcon
-              name="add-outline"
-              style={{ color: "#2E3A59" }}
-              size={40}
-            />
-          ),
-          tabBarButton: (props) => <CustomTabBarButton {...props} />,
-        }}
-      />
-      <Tab.Screen
-        name="Home4"
-        component={HomeStack}
+        name="Notes"
+        component={NoteStack}
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={{ alignItems: "center", justifyContent: "center" }}>

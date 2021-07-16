@@ -8,7 +8,12 @@ const SelectCategory = ({ navigation }) => {
   return (
     <Wrapper>
       <HeaderWrapper>
-        <Icon name="arrow-back-outline" size={25} color="#000000" />
+        <Icon
+          name="arrow-back-outline"
+          size={25}
+          color="#000000"
+          onPress={() => navigation.goBack()}
+        />
         <HeaderTitle>Pilih Kategori </HeaderTitle>
         <Icon name="arrow-back-outline" size={25} color="#eaeaea" />
       </HeaderWrapper>
